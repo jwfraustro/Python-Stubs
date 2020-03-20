@@ -75,6 +75,7 @@ categories = {
     'Propellers': '91'
 }
 
+
 def get_hs_session(username, password):
     payload = {}
     payload['Username'] = username
@@ -86,8 +87,8 @@ def get_hs_session(username, password):
 
     return session
 
-def add_product(product, session, primary_photo=None):
 
+def add_product(product, session, primary_photo=None):
     item_form = {
         'productName': product['title'],
         'productDescription': product['desc'],
@@ -116,12 +117,12 @@ def add_product(product, session, primary_photo=None):
 
     product_data = MultipartEncoder(fields=item_form, boundary='-----WebKitFormBoundarymkISNjkugjjFZdvE')
     session.post('https://www.hangarswap.com/Seller/SaveProduct', data=product_data,
-           headers={'Content-Type': product_data.content_type})
+                 headers={'Content-Type': product_data.content_type})
 
     return
 
-def upload_photos(product_id, file_names, session):
 
+def upload_photos(product_id, file_names, session):
     for i, photo_path in enumerate(file_names):
         print("ID:", product_id, "File:", i, "of", len(file_names))
 
